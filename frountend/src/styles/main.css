@@ -1,0 +1,129 @@
+/* Global */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e9eef3, #f9fbfd);
+    color: #333;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+  
+  /* Title */
+  h1 {
+    margin-bottom: 5px;
+    font-size: 22px;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  /* Emotion Indicator */
+  .emotion-indicator {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  
+  .emotion {
+    margin-left: 6px;
+  }
+  
+  /* Emotion colors */
+  .emotion.happy {
+    color: green;
+  }
+  .emotion.sad {
+    color: #0077cc;
+  }
+  .emotion.angry {
+    color: red;
+  }
+  .emotion.neutral {
+    color: gray;
+  }
+  
+  /* Chat Window */
+  .chat-window {
+    height: 220px;
+    overflow-y: auto;
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .chat-placeholder {
+    font-size: 13px;
+    color: #888;
+    margin-top: 80px;
+  }
+  
+  /* Messages */
+  .chat-message {
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  
+  .chat-message.user {
+    background: #dbeafe;
+    text-align: left;
+  }
+  
+  .chat-message.therapist {
+    background: #dcfce7;
+    text-align: left;
+  }
+  
+  /* Call Controls */
+  .call-controls {
+    margin-top: 10px;
+  }
+  
+  .call-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    transition: 0.2s ease;
+  }
+  
+  .call-btn:hover {
+    background: #1e40af;
+  }
+  
+  .call-btn.stop {
+    background: #dc2626;
+  }
+  
+  .call-btn.stop:hover {
+    background: #991b1b;
+  }
+  
+  /* Loading */
+  .loading {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #555;
+  }
+  
