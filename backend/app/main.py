@@ -2,9 +2,13 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 import tempfile
 
-from app.services.whisper_api import speech_to_text
-from app.services.emotion_api import detect_emotion
-from app.services.chat_api import therapist_reply
+from app.services.speech_to_text import speech_to_text
+from app.services.emotion_recognition import detect_emotion
+from app.services.therapist_agent import therapist_reply
+
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = FastAPI()
 
@@ -16,7 +20,7 @@ app.add_middleware(
 )
 
 @app.post("/analyze")
-async def analyze(file: UploadFile = File(...)):
+async def analyze_audio(file: UploadFile = File(...)):
     with tempfile.NamedTemporaryFile(delete=False) as tmp:
         tmp.write(await file.read())
         audio_path = tmp.name
@@ -30,3 +34,5 @@ async def analyze(file: UploadFile = File(...)):
         "emotion": emotion,
         "reply": reply
     }
+# print("OPENAI:", os.getenv("OPENAI_API_KEY") is not None)
+# print("GROQ:", os.getenv("GROQ_API_KEY") is not None)

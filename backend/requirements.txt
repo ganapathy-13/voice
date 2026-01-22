@@ -5,3 +5,6 @@ torch
 speechbrain
 openai-whisper
 gtts
+openai
+groq
+textblob

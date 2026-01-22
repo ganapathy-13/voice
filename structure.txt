@@ -29,7 +29,9 @@ emotion-aware-therapist/
 │   └── vite.config.js
 │
 ├── backend/                   # ⚙ AI Backend (FastAPI)
-│   ├── app/
+│   ├── .env  
+|   |
+|   ├── app/
 │   │   ├── main.py                    # FastAPI entry point
 │   │   │
 │   │   ├── api/
