@@ -1,19 +1,44 @@
+import google.generativeai as genai
 import os
-from openai import OpenAI
+import mimetypes
+import whisper
 
-# Use Groq's endpoint + your Groq API key
-client = OpenAI(
-    api_key=os.getenv("GROQ_API_KEY"),          # ← Get this from https://console.groq.com/keys
-    base_url="https://api.groq.com/openai/v1",
-)
+# model = whisper.load_model("tiny")
+
+# def speech_to_text(audio_path: str) -> str:
+#     try:
+#         result = model.transcribe(audio_path)
+#         return result["text"].strip()
+#     except Exception as e:
+#         print("Speech-to-text error:", e)
+#         return "Speech transcription failed"
+
+import os
+import mimetypes
+
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def speech_to_text(audio_path: str) -> str:
-    with open(audio_path, "rb") as audio_file:
-        transcript = client.audio.transcriptions.create(
-            file=audio_file,
-            model="whisper-large-v3",           # Best quality (or try "whisper-large-v3-turbo" for cheaper/faster)
-            # Optional: Add these if needed
-            # language="ta",                   # For Tamil-primary audio
-            # prompt="Transcribe in Tamil-English mix if present",  # Helps with code-switching
+    try:
+        mime_type, _ = mimetypes.guess_type(audio_path)
+        if mime_type is None:
+            mime_type = "audio/mpeg"
+
+        audio_file = genai.upload_file(
+            path=audio_path,
+            mime_type=mime_type
         )
-    return transcript.text
+
+        # ✅ CORRECT MODEL
+        model = genai.GenerativeModel("models/gemini-1.5-pro")
+
+        response = model.generate_content([
+            "Transcribe this audio to text accurately.",
+            audio_file
+        ])
+
+        return response.text.strip()
+
+    except Exception as e:
+        print("Speech-to-text error:", e)
+        return "Speech transcription failed"

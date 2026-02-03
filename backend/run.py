@@ -15,6 +15,7 @@ if __name__ == "__main__":
 
 print("OPENAI:", os.getenv("OPENAI_API_KEY") is not None)
 print("GROQ:", os.getenv("GROQ_API_KEY") is not None)
+print("GEMINI:", os.getenv("GEMINI_API_KEY") is not None)
 
 # from fastapi import FastAPI, UploadFile, File
 # from fastapi.middleware.cors import CORSMiddleware
